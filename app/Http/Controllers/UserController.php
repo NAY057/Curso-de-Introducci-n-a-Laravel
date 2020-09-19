@@ -39,11 +39,19 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
+        // AQUI SE VALIDAN LOS DATOS
+        $request->validate([
+            'name' => 'required',
+            // unique:users valida que el campo email sea unico en la tabla users
+            'email' => ['required', 'email', 'unique:users'], 
+            'password' => ['required', 'min:8'],
+        ]);
+            // para encrptar contraseññas se una bcrypt()
         User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => $request->password,
+            'password' => bcrypt($request->password),
         ]);
         // retorno a la vista anterior
         return back();

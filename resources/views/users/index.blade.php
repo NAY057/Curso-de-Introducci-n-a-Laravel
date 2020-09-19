@@ -24,14 +24,23 @@
                 <div class="col-xl-8 mx-auto">
                     <div class="card border-0 shadow">
                         <div class="card-body">
+                            {{-- aqui se notifican los errores encontrados  --}}
+                            @if($errors->any())
+                            <div class="alert alert-danger">
+                                @foreach($errors->all() as $error)
+                                    - {{ $error }}<br>
+                                @endforeach
+                            </div>
+                                
+                            @endif
                             <form action="{{ route('user.store') }}" method="POST">
                                 <div class="form-row">
                                     <div class="col-sm-3">
                                         {{-- EL 'name' HACE REFERENCIA AL NOMBRE QUE TIENEN LOS ATRIBUTOS EN LA BASE DE DATOS. --}}
-                                        <input type="text" name="name" class="form-control" placeholder="Nombre">
+                                    <input type="text" name="name" value="{{old('name')}}" class="form-control" placeholder="Nombre">
                                     </div>
                                     <div class="col-sm-4">
-                                        <input type="text" name="email" class="form-control" placeholder="Email">
+                                        <input type="text" name="email" value="{{old('email')}}" class="form-control" placeholder="Email">
                                     </div>
                                     <div class="col-sm-3">
                                         <input type="password" name="password" class="form-control" placeholder="Contraseña">

@@ -77,8 +77,24 @@ _____________________________________________
 ## MODELOS LARAVEL
 El siguiente codigo crea archivo controlador, modelo y migracion con un solo comando.
     php artisan make:model ModelName -crm
+    
+Te crea -r: resource, -m: migración, -c: controlador, te ahorra un poco de código y además hace que tu proyecto esté un poco mas ordenado
+    php artisan make:model [NombreModelo] -r -m -c
 _____________________________________________
 
 ## tinker
 Crea la cantidad de usuarios que una quiera
     User::factory()->count(12)->create();
+_____________________________________________
+
+## Middlewares
+La función principal es proporcionar una fácil y conveniente capa para filtrar las solicitudes HTTP. 
+
+hay dos formas de usar los middlewares Y SOLO SE DEBE DE UTILIZAR UNA DE ELLAS, preferiblemente en las rutas.
+
+- la primera es poner los middlewares en los controladores
+    public function __construct(){
+	$this->middleware('auth')->only(['index','store',example]);
+    }
+- la segunda es poniendo los middlewares en las rutas
+    Route::get('/', 'App\Http\Controllers\UserController@index')->middleware('auth');
