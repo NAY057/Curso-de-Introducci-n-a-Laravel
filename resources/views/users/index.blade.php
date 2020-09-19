@@ -34,6 +34,8 @@
                         <tbody>
                             {{-- Contenido de la tabla --}}
                             @foreach ($users as $user)
+                            {{-- tr son las filas --}}
+                            {{-- td son las columnas --}}
                                 <tr>
                                 <td>{{$user->id}}</td>
                                 <td>{{$user->name}}</td>
