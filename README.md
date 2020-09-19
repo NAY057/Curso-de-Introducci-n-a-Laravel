@@ -29,6 +29,12 @@ If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Lar
 
 ## Curso de Introducción a Laravel
 
+## DESARROLLO EN LARAVEL
+1- Se deben de crear las rutas
+2- Configuracion de controladores
+3- Codificacion de la logica
+_____________________________________________
+
 ## COMO CREAR UN PROYECTO EN LARAVEL
  Despues de instalar el composer y el xammp o tro gestor de bases de datos se corre el siguiente codigo:
     laravel new nombre del proyecto
@@ -44,3 +50,35 @@ _____________________________________________
 ## MIGRACIONES
 Con el siguiente comando se migran las tablas creadas en laravel hacia la base de datos
     php artisan migrate
+_____________________________________________
+## RUTAS
+Para ver las rutas existentes se usa el siguiente codigo
+    php artisan routes:list
+
+Métodos http en servidor:
+    Get: para mostrar o listar.
+    Post: para crear
+    Put/Patch: para modificar o editar
+    Delete: eliminar o borrar
+Sytax de una ruta
+    Route::METODO HTTP('NOMBRE DE LA RUTA', 'App\Http\Controllers\NOMBRE DEL CONTROLADOR@METODO DEL CONTROLADOR')->name('NOMBRE ASIGNADO A LA RUTA.METODO DEL CONTROLADOR');
+_____________________________________________
+
+## CRUD LARAVEL
+Para crear un controlador sin ningun metodo se usa el siguiente codigo
+    php artisan make:controller nombre del controlador
+
+Si se quiere crear un controlador con todos los metodos de un CRUD se usa el siguiente codigo
+    php artisan make:controller -r nombre del controlador
+Notas:
+- los controladores deben de seguir la logica de las rutas
+_____________________________________________
+
+## MODELOS LARAVEL
+El siguiente codigo crea archivo controlador, modelo y migracion con un solo comando.
+    php artisan make:model ModelName -crm
+_____________________________________________
+
+## tinker
+Crea la cantidad de usuarios que una quiera
+    User::factory()->count(12)->create();
